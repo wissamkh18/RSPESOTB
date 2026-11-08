@@ -2,6 +2,10 @@
 
 MATLAB simulation of a two-RC battery model, with parameter identification and online estimation of state of charge (SOC), series resistance, and capacity. The input current is derived from the included EPA UDDS speed trace using a fixed vehicle and pack model.
 
+Current derived from the UDDS speed trace, with close-ups of a rest interval and a current jump.
+
+![UDDS current profile with rest and current-jump close-ups](figures_png/UDDS_original_with_zooms.png)
+
 The script runs two experiments:
 
 1. Identify `R1`, `R2`, `C1`, and `C2` from voltage relaxation during zero-current rests and the load between them. The initial parameter guesses are deliberately offset from the reference values.
@@ -28,6 +32,7 @@ The script clears the workspace, closes existing figures, and sets graphics defa
 | `battery_estimation_UDDS_publication.m` | Simulation, estimators, and plotting helpers in one script |
 | `epa_udds_speed.csv` | Time in seconds and speed in mph, sampled at 1 Hz from 0 to 1369 s |
 | `figures_eps/` | Exported vector figures |
+| `figures_png/` | PNG previews, including the current profile shown above |
 
 The CSV must start at zero and have strictly increasing time with one-second spacing. The reader uses the first two columns and removes rows with non-finite values. It looks in the current folder, then beside the script, and otherwise opens a file picker.
 
@@ -65,5 +70,3 @@ Series resistance is estimated from current and voltage jumps. The noisy case ac
 | `nominal_x1.eps` | Nominal SOC |
 | `uncertainties_Rs_Q.eps` | Resistance and capacity with disturbances |
 | `UDDS_original_with_zooms.eps` | Derived current with rest and jump close-ups |
-
-
